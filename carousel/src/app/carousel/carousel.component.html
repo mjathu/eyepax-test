@@ -1,0 +1,20 @@
+
+<p *ngIf="title" class="title">{{ title }}</p>
+
+<div class="carousel">
+    
+    <ng-container *ngFor="let slide of slideList; let i = index">
+        <img *ngIf="i === presentSlide" [src]="slide.image" class="slide" @carouselAnimation />
+        <p *ngIf="i === presentSlide" @carouselAnimation class="name">{{slide.title}}</p>
+        <p *ngIf="i === presentSlide && slide.subTitle" @carouselAnimation class="subtitle">{{slide.subTitle}}</p>
+    </ng-container>
+
+    <button class="control prev" (click)="onPreviousClick()" *ngIf="checkPrevious()">
+        <span class="arrow left"></span>
+    </button>
+
+    <button class="control next" (click)="onNextClick()" *ngIf="checkNext()">
+        <span class="arrow right"></span>
+    </button>
+
+</div>
